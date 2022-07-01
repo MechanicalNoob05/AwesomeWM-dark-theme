@@ -1,0 +1,7 @@
+configuration {
+	modi: "run";
+	width:20;
+	show-icons: true;
+	
+}
+@theme "~/.config/rofi/themes/slate.rasi"

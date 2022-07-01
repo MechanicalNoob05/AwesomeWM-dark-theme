@@ -1,0 +1,346 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+background = #1e1e1e
+background-alt = #373B41
+foreground = #DcD7C9
+primary = #Ce9461
+secondary = #DCD7C9
+alert = #A54242
+disabled = #707880
+
+[bar/Main]
+width = 30%
+height = 24pt
+offset-x = 35%
+radius = 15
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2pt
+
+border-size = 0
+border-color = #ffffff
+
+padding-left = 1
+padding-right = 1
+padding-bottom = 3
+
+module-margin = 1
+
+separator = |
+separator-foreground = ${colors.disabled}
+
+font-0 = monospace;4:pixelsize=11;4
+font-1 = fixed:pixelsize=11;1
+font-2 = siji:pixelsize=10;1
+font-3 = unifont:fontformat=truetype:size=11:antialias=true;0
+
+fixed-center = true
+
+tray-position = none
+tray-background = ${colors.background}
+tray-offset-x = 15%
+
+modules-center = xworkspaces
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+[bar/Left]
+width = 30%
+height = 24pt
+offset-x = 0%
+radius = 15
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+;line-size = 2pt
+
+;border-size = 0
+;border-color = #00000000
+
+padding-left = 1
+padding-right = 1
+padding-bottom = 3
+
+module-margin = 1
+
+separator = |
+separator-foreground = ${colors.disabled}
+
+font-0 = monospace;4:pixelsize=11;4
+font-1 = fixed:pixelsize=11;1
+font-2 = siji:pixelsize=10;1
+font-3 = unifont:fontformat=truetype:size=11:antialias=true;0
+
+modules-center = mpd 
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+
+
+[bar/Right]
+width = 30%
+height = 24pt
+offset-x = 70%
+radius = 15
+; dpi = 96
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 2pt
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+padding-bottom = 3
+
+module-margin = 1
+
+separator = |
+separator-foreground = ${colors.disabled}
+
+font-0 = monospace;4:pixelsize=11;4
+font-1 = fixed:pixelsize=11;1
+font-2 = siji:pixelsize=10;1
+font-3 = unifont:fontformat=truetype:size=11:antialias=true;0
+
+modules-left = backlight-acpi
+modules-center = pulseaudio battery battery1 
+modules-right = date  
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+enable-ipc = true
+
+
+
+[module/backlight-acpi]
+type = custom/script
+exec = ~/.config/polybar/brightnessctl.sh
+interval = 0.5
+scroll-up = exec brightnessctl set +5%
+scroll-down = exec brightnessctl set 5%-
+label = %output%
+label-foreground = ${colors.foreground} 
+label-underline = #4bffdc
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/battery1]
+type = internal/battery
+battery = BAT1
+adapter = ADP1
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = #ffb52a
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+
+[module/temperature]
+type = internal/temperature
+format-prefix = "TEMP "
+format-prefix-foreground = ${colors.primary}
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = #f50a4d
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+
+[module/xworkspaces]
+type = internal/xworkspaces
+
+label-active = %name%
+label-active-background = ${colors.background-alt}
+label-active-underline= ${colors.primary}
+label-active-padding = 1
+
+label-occupied = %name%
+label-occupied-padding = 1
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %name%
+label-empty-foreground = ${colors.disabled}
+label-empty-padding = 1
+
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = ${colors.primary}
+format-volume = <label-volume>
+
+label-volume = %percentage%%
+
+label-muted = muted
+label-muted-foreground = ${colors.disabled}
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+label-layout = %layout%
+label-layout-foreground = ${colors.primary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-foreground = ${colors.background}
+label-indicator-background = ${colors.secondary}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.primary}
+label = %percentage_used:2%%
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.primary}
+label = %percentage:2%%
+
+[network-base]
+type = internal/network
+interval = 5
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-disconnected = %{F#F0C674}%ifname%%{F#707880} disconnected
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = %I:%M
+date-alt = %d-%m-%Y %I:%M
+
+label = %date%
+label-foreground = ${colors.primary}
+
+[module/mpd]
+type = internal/mpd
+format-online = "<icon-stop>    <icon-prev>    <bar-progress>    <icon-next>    <toggle> "
+icon-prev = << 
+icon-stop = o
+icon-play = |>
+icon-pause = ||
+icon-next = >>
+label-song-maxlen = 40
+label-song-ellipsis = true
+bar-progress-width = 20
+bar-progress-indicator = >
+bar-progress-fill = >
+bar-progress-empty = >
+bar-progress-fill-foreground = #A54242
+bar-progress-fill-background = ${colors.background}
+bar-progress-indicator-foreground = ${colors.foreground}
+format-online-foreground = ${colors.foreground}
+format-online-background = ${colors.background}
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
+
+; vim:ft=dosini
