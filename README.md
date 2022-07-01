@@ -8,5 +8,6 @@ This one is a slight modification of my i3wm config most the polybar and is rema
 
 ![Screenshot_2022-07-01_16-27-15](https://user-images.githubusercontent.com/35838069/176926322-84a1a186-a085-44a4-b898-e6dc6388aed1.png)
 
+![Screenshot_2022-07-01_21-12-11](https://user-images.githubusercontent.com/35838069/176927010-ca22dd30-bfac-49e6-8707-208fee5573b5.png)
 
 ## Installation
