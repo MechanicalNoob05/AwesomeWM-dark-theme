@@ -13,7 +13,7 @@ read option
 
 if [[ option = 'y' ]]; then
   echo "Okay"
-  rm -r -v ~/AwesomeWM-dark-theme
+  rm -rf ~/AwesomeWM-dark-theme
 else 
   echo "Okay"
 fi
