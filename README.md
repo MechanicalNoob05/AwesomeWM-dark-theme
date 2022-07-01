@@ -34,8 +34,8 @@ This one is a slight modification of my i3wm config most the polybar and is rema
 - Mod + w           = Wifi menu.
 
 ## Installation
-* Clone the reposetory itself using `git clone AwesomeWm-dark-theme`
-* Enter the cloned directory using `cd AwesomeWm-dark-theme`
+* Clone the reposetory itself using `git clone AwesomeWM-dark-theme`
+* Enter the cloned directory using `cd AwesomeWM-dark-theme`
 * Give executable permissions to the install script by using `chmod+x install.sh`
 * Use the bash script to install the theme by `bash install.sh`
 > The script will automatically backup the existing files in a zip file, and will ask if you want to remove the cloned directory at the end.
