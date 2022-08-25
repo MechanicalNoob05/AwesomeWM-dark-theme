@@ -12,7 +12,7 @@ echo "Do you want to remove the cloned directory"
 read option
 
 if [[ option = 'y' ]]; then
-  echo "Okay"
+  echo "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Okay"
   rm -rf ~/AwesomeWM-dark-theme
 else 
   echo "Okay"
